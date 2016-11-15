@@ -110,9 +110,9 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     browsers: determineBrowsers(),
-    browserDisconnectTimeout: 20000,
-    browserNoActivityTimeout: 240000,
-    captureTimeout: 120000,
+    browserDisconnectTimeout: 40000,
+    browserNoActivityTimeout: 480000,
+    captureTimeout: 240000,
     concurrency: USING_SL ? 4 : Infinity,
     customLaunchers: SL_LAUNCHERS,
 
