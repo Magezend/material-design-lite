@@ -42,6 +42,7 @@
    */
   MaterialTooltip.prototype.Constant_ = {
     // None for now.
+    DISTANCE: 5
   };
 
   /**
@@ -93,13 +94,13 @@
     }
 
     if (this.element_.classList.contains(this.CssClasses_.TOP)) {
-      this.element_.style.top = props.top - this.element_.offsetHeight - 10 + 'px';
+      this.element_.style.top = props.top - this.element_.offsetHeight - this.Constant_.DISTANCE + 'px';
     } else if (this.element_.classList.contains(this.CssClasses_.RIGHT)) {
-      this.element_.style.left = props.left + props.width + 10 + 'px';
+      this.element_.style.left = props.left + props.width + this.Constant_.DISTANCE + 'px';
     } else if (this.element_.classList.contains(this.CssClasses_.LEFT)) {
-      this.element_.style.left = props.left - this.element_.offsetWidth - 10 + 'px';
+      this.element_.style.left = props.left - this.element_.offsetWidth - this.Constant_.DISTANCE + 'px';
     } else {
-      this.element_.style.top = props.top + props.height + 10 + 'px';
+      this.element_.style.top = props.top + props.height + this.Constant_.DISTANCE + 'px';
     }
 
     this.element_.classList.add(this.CssClasses_.IS_ACTIVE);
@@ -148,7 +149,7 @@
   // in the global scope.
   componentHandler.register({
     constructor: MaterialTooltip,
-    classAsString: 'MaterialTooltip',
-    cssClass: 'mdl-tooltip'
+    classAsString: 'MaterialTooltipPlus',
+    cssClass: 'mdl-js-tooltip-plus'
   });
 })();

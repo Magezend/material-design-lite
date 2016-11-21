@@ -37,6 +37,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import uniffe from './utils/uniffe.js';
 import pkg from './package.json';
 
+const libPath = '/home/zendkofy/public_html/react-redux/visualsliderdesigner/lib/Zendkofy_Framework/js/lib/material-design-lite';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const hostedLibsUrlPrefix = 'https://code.getmdl.io';
@@ -83,9 +84,11 @@ const SOURCES = [
   'src/snackbar/snackbar.js',
   'src/spinner/spinner.js',
   'src/switch/switch.js',
+  'src/switch-plus/switch.js',
   'src/tabs/tabs.js',
   'src/textfield/textfield.js',
   'src/tooltip/tooltip.js',
+  'src/tooltip-plus/tooltip.js',
   // Complex components (which reuse base components)
   'src/layout/layout.js',
   'src/data-table/data-table.js',
@@ -182,12 +185,14 @@ gulp.task('styles', () => {
     .pipe($.concat('material.css'))
     .pipe($.header(banner, {pkg}))
     .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(libPath))
     // Minify Styles
     .pipe($.if('*.css', $.csso()))
     .pipe($.concat('material.min.css'))
     .pipe($.header(banner, {pkg}))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(libPath))
     .pipe($.size({title: 'styles'}));
 });
 
@@ -239,6 +244,7 @@ gulp.task('scripts', ['lint'], () => {
     .pipe($.concat('material.js'))
     .pipe($.iife({useStrict: true}))
     .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(libPath))
     // Minify Scripts
     .pipe($.uglify({
       sourceRoot: '.',
@@ -249,8 +255,14 @@ gulp.task('scripts', ['lint'], () => {
     // Write Source Maps
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(libPath))
     .pipe($.size({title: 'scripts'}));
 });
+
+gulp.task('deploy', [
+    'styles',
+    'scripts',
+]);
 
 // Clean Output Directory
 gulp.task('clean', () => del(['dist', '.publish']));

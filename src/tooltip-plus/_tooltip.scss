@@ -15,8 +15,7 @@
  */
 
 @import "../variables";
-
-.mdl-tooltip {
+.mdl-tooltip-plus {
   transform: scale(0);
   transform-origin: top center;
   z-index: 999;
@@ -33,9 +32,10 @@
   left: -500px;
   padding: 8px;
   text-align: center;
-}
-.mdl-tooltip.is-active {
-  animation: pulse 200ms $animation-curve-linear-out-slow-in forwards;
+  text-transform: initial;
+  &.is-active {
+    animation: pulse 200ms $animation-curve-linear-out-slow-in forwards;
+  }
 }
 
 .mdl-tooltip--large {
