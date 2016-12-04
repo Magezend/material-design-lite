@@ -126,7 +126,7 @@ $text-link-color: unquote("rgb(#{$color-accent})") !default;
 // Other components may also fail to adhere to MD without these rules.
 // It is strongly recommended you leave this as true.
 
-$target-elements-directly: true !default;
+$target-elements-directly: false !default;
 
 /* ==========  Components  ========== */
 
