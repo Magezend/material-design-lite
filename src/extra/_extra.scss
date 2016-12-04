@@ -1,0 +1,18 @@
+/* extra css */
+@import "../variables";
+$ripple-duration: 1s;
+
+.mdl-ripple {
+  background: #999999;
+  &.is-animating {
+    transition: transform $ripple-duration $animation-curve-linear-out-slow-in,
+    width $ripple-duration $animation-curve-linear-out-slow-in,
+    height $ripple-duration $animation-curve-linear-out-slow-in,
+    opacity $ripple-duration $animation-curve-linear-out-slow-in;
+  }
+}
+
+.mdl-tooltip, .mdl-tooltip-plus {
+  font-weight: bold;
+  text-transform: none;
+}
